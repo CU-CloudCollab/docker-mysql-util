@@ -1,7 +1,6 @@
-#!/usr/bin/env ruby
-
 require 'aws-sdk'
 
+# Create a two-digit, zero-padded string from n
 def zerofill2(n)
   n.to_s.rjust(2, "0")
 end
@@ -21,7 +20,7 @@ def start_snapshot(rds_instance)
     # ]
     )
 
-    puts "Created snapshot #{snapshot.snapshot_id}"
+    puts "Created snapshot #{snapshot.snapshot_id}."
 
     snapshot
 end
@@ -31,19 +30,19 @@ def pending_snapshots(rds_instance)
     snaps = rds_instance.snapshots(snapshot_type: 'manual')
 
     pendingSnaps = snaps.select do |snap|
-        puts "snapshot: #{snap.snapshot_id} #{snap.status}"
+        # puts "snapshot: #{snap.snapshot_id} #{snap.status}"
         snap.status == 'creating'
     end
 
-    puts "#{pendingSnaps.size} pending snapshots"
-    puts 'No pending snapshots' if pendingSnaps.empty?
+    puts "#{pendingSnaps.size} pending snapshots." if !pendingSnaps.empty?
+    puts 'No pending snapshots.' if pendingSnaps.empty?
 
     pendingSnaps
 end
 
 def wait_for_snapshot(snapshot, max_attempts = 72)
     snap_available = snapshot.wait_until(max_attempts: max_attempts, delay: 5) do |snap|
-        puts "status: #{snap.status} (#{snap.percent_progress})"
+        puts "Snapshot progress: #{snap.percent_progress}% - #{snap.status}"
 
         # less conservative test
         # snap.percent_progress == 100

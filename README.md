@@ -2,6 +2,8 @@
 
 A Docker container for misc. MySQL utilities implemented in Ruby.
 
+May move to CU-CloudCollab organization in the future.
+
 ## Lock-and-Snap
 
 For a MySQL database containing MyISAM tables, flush and lock the tables, then create a snapshot.

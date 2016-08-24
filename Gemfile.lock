@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/pauleallen/cucloud_ruby.git
+  remote: git://github.com/paul-e-allen/cucloud_ruby.git
   revision: f7b453c51d5fccfcdb2d2c7d8ddb0cc8ef479375
   branch: master
   specs:

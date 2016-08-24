@@ -1,3 +1,3 @@
 FROM ruby:2.1-onbuild
 
-CMD ["ruby", "./lock-and-snap.rb"]
+CMD ["bundle", "exec", "./lock-and-snap.rb"]

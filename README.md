@@ -7,6 +7,7 @@ A Docker container for misc. MySQL utilities implemented in Ruby.
 ## Lock-and-Snap MySQL Tables
 
 This utility creates snapshots of MySQL RDS databases that contain MyISAM tables. MyISAM tables are not fully supported by the automatic snapshotting available to RDS MyQSL databases. However AWS suggests a methodology ensure that snapshots containing MyISAM tables are usable. In short, the methodology is:
+
 1. Stop all activity to MyISAM tables.
 2. Lock and flush all MyISAM tables.
 3. Manually create a DB snapshot.
